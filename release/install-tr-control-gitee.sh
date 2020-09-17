@@ -416,7 +416,7 @@ getTransmissionPath() {
 
 	# 威联通
 	if [ -f "/etc/config/qpkg.conf" ]; then
-		ROOT_FOLDER="/share/CACHEDEV1_DATA/.qpkg/QTransmission/share/transmission"
+		ROOT_FOLDER=$(/sbin/getcfg QTransmission Install_Path -f /etc/config/qpkg.conf)/share/transmission
 	fi
 	
 	if [ ! -d "$ROOT_FOLDER" ]; then
