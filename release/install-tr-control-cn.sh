@@ -413,6 +413,11 @@ getTransmissionPath() {
 		ROOT_FOLDER="/var/packages/transmission/target/share/transmission"
 	fi
 
+	# 威联通
+	if [ -f "/etc/config/qpkg.conf" ]; then
+		ROOT_FOLDER="/share/CACHEDEV1_DATA/.qpkg/QTransmission/share/transmission"
+	fi
+
 	if [ ! -d "$ROOT_FOLDER" ]; then
 		showLog "$MSG_FIND_WEB_FOLDER_FROM_PROCESS" "n"
 		infos=`ps -Aww -o command= | sed -r -e '/[t]ransmission-da/!d' -e 's/ .+//'`
