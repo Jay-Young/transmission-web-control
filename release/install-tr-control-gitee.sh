@@ -414,9 +414,14 @@ getTransmissionPath() {
 		ROOT_FOLDER="/var/packages/transmission/target/share/transmission"
 	fi
 
-	# 威联通
+	# 威联通 QTransmission 2.94
 	if [ -f "/etc/config/qpkg.conf" ]; then
 		ROOT_FOLDER=$(/sbin/getcfg QTransmission Install_Path -f /etc/config/qpkg.conf)/share/transmission
+	fi
+
+	# 威联通 QTransmission3 3.x
+	if [ -f "/etc/config/qpkg.conf" ]; then
+		ROOT_FOLDER=$(/sbin/getcfg QTransmission3 Install_Path -f /etc/config/qpkg.conf)/share/transmission
 	fi
 	
 	if [ ! -d "$ROOT_FOLDER" ]; then
